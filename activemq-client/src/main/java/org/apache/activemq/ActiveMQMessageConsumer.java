@@ -1,4 +1,6 @@
-/**
+/*
+ * Copyright (c) 2023.  Integration Matters GmbH
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -6,13 +8,13 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.apache.activemq;
 
@@ -30,13 +32,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import javax.jms.IllegalStateException;
-import javax.jms.InvalidDestinationException;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.TransactionRolledBackException;
+import jakarta.jms.IllegalStateException;
+import jakarta.jms.InvalidDestinationException;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.MessageListener;
+import jakarta.jms.TransactionRolledBackException;
 
 import org.apache.activemq.blob.BlobDownloader;
 import org.apache.activemq.command.ActiveMQBlobMessage;
@@ -96,10 +98,10 @@ import org.slf4j.LoggerFactory;
  * throw an exception.
  *
  *
- * @see javax.jms.MessageConsumer
- * @see javax.jms.QueueReceiver
- * @see javax.jms.TopicSubscriber
- * @see javax.jms.Session
+ * @see jakarta.jms.MessageConsumer
+ * @see jakarta.jms.QueueReceiver
+ * @see jakarta.jms.TopicSubscriber
+ * @see jakarta.jms.Session
  */
 public class ActiveMQMessageConsumer implements MessageAvailableConsumer, StatsCapable, ActiveMQDispatcher {
 
@@ -415,7 +417,7 @@ public class ActiveMQMessageConsumer implements MessageAvailableConsumer, StatsC
      *         set
      * @throws JMSException if the JMS provider fails to get the message
      *                 listener due to some internal error.
-     * @see javax.jms.MessageConsumer#setMessageListener(javax.jms.MessageListener)
+     * @see jakarta.jms.MessageConsumer#setMessageListener(jakarta.jms.MessageListener)
      */
     @Override
     public MessageListener getMessageListener() throws JMSException {
@@ -436,7 +438,7 @@ public class ActiveMQMessageConsumer implements MessageAvailableConsumer, StatsC
      * @param listener the listener to which the messages are to be delivered
      * @throws JMSException if the JMS provider fails to receive the next
      *                 message due to some internal error.
-     * @see javax.jms.MessageConsumer#getMessageListener
+     * @see jakarta.jms.MessageConsumer#getMessageListener
      */
     @Override
     public void setMessageListener(MessageListener listener) throws JMSException {

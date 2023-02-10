@@ -53,7 +53,7 @@ package org.apache.activemq.selector;
 import java.io.*;
 import java.util.*;
 
-import javax.jms.InvalidSelectorException;
+import jakarta.jms.InvalidSelectorException;
 
 import org.apache.activemq.filter.*;
 import org.apache.activemq.filter.FunctionCallExpression.invalidFunctionExpressionException;
@@ -121,7 +121,7 @@ public class SelectorParser {
         }
     }
 
-    private static BooleanExpression asBooleanExpression(Expression value) throws ParseException  {
+    private BooleanExpression asBooleanExpression(Expression value) throws ParseException  {
         if (value instanceof BooleanExpression) {
             return (BooleanExpression) value;
         }

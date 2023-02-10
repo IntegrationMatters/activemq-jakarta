@@ -1,4 +1,6 @@
-/**
+/*
+ * Copyright (c) 2023.  Integration Matters GmbH
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -6,13 +8,13 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package org.apache.activemq.command;
@@ -29,8 +31,8 @@ import java.util.List;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
-import javax.jms.JMSException;
-import javax.jms.ObjectMessage;
+import jakarta.jms.JMSException;
+import jakarta.jms.ObjectMessage;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.util.ByteArrayInputStream;
@@ -57,13 +59,13 @@ import org.apache.activemq.wireformat.WireFormat;
  * written to.
  *
  * @openwire:marshaller code="26"
- * @see javax.jms.Session#createObjectMessage()
- * @see javax.jms.Session#createObjectMessage(Serializable)
- * @see javax.jms.BytesMessage
- * @see javax.jms.MapMessage
- * @see javax.jms.Message
- * @see javax.jms.StreamMessage
- * @see javax.jms.TextMessage
+ * @see jakarta.jms.Session#createObjectMessage()
+ * @see jakarta.jms.Session#createObjectMessage(Serializable)
+ * @see jakarta.jms.BytesMessage
+ * @see jakarta.jms.MapMessage
+ * @see jakarta.jms.Message
+ * @see jakarta.jms.StreamMessage
+ * @see jakarta.jms.TextMessage
  */
 public class ActiveMQObjectMessage extends ActiveMQMessage implements ObjectMessage, TransientInitializer {
 
@@ -169,8 +171,8 @@ public class ActiveMQObjectMessage extends ActiveMQMessage implements ObjectMess
      * @param newObject the message's data
      * @throws JMSException if the JMS provider fails to set the object due to
      *                 some internal error.
-     * @throws javax.jms.MessageFormatException if object serialization fails.
-     * @throws javax.jms.MessageNotWriteableException if the message is in
+     * @throws jakarta.jms.MessageFormatException if object serialization fails.
+     * @throws jakarta.jms.MessageNotWriteableException if the message is in
      *                 read-only mode.
      */
 

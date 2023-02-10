@@ -1,4 +1,6 @@
-/**
+/*
+ * Copyright (c) 2023.  Integration Matters GmbH
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -6,13 +8,13 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.apache.activemq;
 
@@ -21,9 +23,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.jms.JMSException;
-import javax.jms.TransactionInProgressException;
-import javax.jms.TransactionRolledBackException;
+import jakarta.jms.JMSException;
+import jakarta.jms.TransactionInProgressException;
+import jakarta.jms.TransactionRolledBackException;
 import javax.transaction.xa.XAException;
 import javax.transaction.xa.XAResource;
 import javax.transaction.xa.Xid;
@@ -56,10 +58,10 @@ import org.slf4j.LoggerFactory;
  * JMS provider may choose to implement this functionality from scratch. <p/>
  *
  *
- * @see javax.jms.Session
- * @see javax.jms.QueueSession
- * @see javax.jms.TopicSession
- * @see javax.jms.XASession
+ * @see jakarta.jms.Session
+ * @see jakarta.jms.QueueSession
+ * @see jakarta.jms.TopicSession
+ * @see jakarta.jms.XASession
  */
 public class TransactionContext implements XAResource {
 
@@ -229,7 +231,7 @@ public class TransactionContext implements XAResource {
 
     /**
      * Start a local transaction.
-     * @throws javax.jms.JMSException on internal error
+     * @throws jakarta.jms.JMSException on internal error
      */
     public void begin() throws JMSException {
 
@@ -261,7 +263,7 @@ public class TransactionContext implements XAResource {
      *
      * @throws JMSException if the JMS provider fails to roll back the
      *                 transaction due to some internal error.
-     * @throws javax.jms.IllegalStateException if the method is not called by a
+     * @throws jakarta.jms.IllegalStateException if the method is not called by a
      *                 transacted session.
      */
     public void rollback() throws JMSException {
@@ -297,7 +299,7 @@ public class TransactionContext implements XAResource {
      *
      * @throws JMSException if the JMS provider fails to commit the transaction
      *                 due to some internal error.
-     * @throws javax.jms.IllegalStateException if the method is not called by a
+     * @throws jakarta.jms.IllegalStateException if the method is not called by a
      *                 transacted session.
      */
     public void commit() throws JMSException {

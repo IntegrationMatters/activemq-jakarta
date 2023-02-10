@@ -1,4 +1,6 @@
-/**
+/*
+ * Copyright (c) 2023.  Integration Matters GmbH
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -6,13 +8,13 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.apache.activemq.broker.region.policy;
 
@@ -31,12 +33,13 @@ public abstract class AbstractDeadLetterStrategy implements DeadLetterStrategy {
     private boolean processNonPersistent = false;
     private boolean processExpired = true;
     private boolean enableAudit = true;
+    private final ActiveMQMessageAudit messageAudit = new ActiveMQMessageAudit();
     private long expiration;
 
     @Override
     public void rollback(Message message) {
         if (message != null && this.enableAudit) {
-            lookupActiveMQMessageAudit(message).rollback(message);
+            messageAudit.rollback(message);
         }
     }
 
@@ -45,7 +48,7 @@ public abstract class AbstractDeadLetterStrategy implements DeadLetterStrategy {
         boolean result = false;
         if (message != null) {
             result = true;
-            if (enableAudit && lookupActiveMQMessageAudit(message).isDuplicate(message)) {
+            if (enableAudit && messageAudit.isDuplicate(message)) {
                 result = false;
                 LOG.debug("Not adding duplicate to DLQ: {}, dest: {}", message.getMessageId(), message.getDestination());
             }
@@ -107,13 +110,20 @@ public abstract class AbstractDeadLetterStrategy implements DeadLetterStrategy {
         this.expiration = expiration;
     }
 
-    public abstract int getMaxProducersToAudit();
+    public int getMaxProducersToAudit() {
+        return messageAudit.getMaximumNumberOfProducersToTrack();
+    }
 
-    public abstract void setMaxProducersToAudit(int maxProducersToAudit);
+    public void setMaxProducersToAudit(int maxProducersToAudit) {
+        messageAudit.setMaximumNumberOfProducersToTrack(maxProducersToAudit);
+    }
 
-    public abstract void setMaxAuditDepth(int maxAuditDepth);
+    public void setMaxAuditDepth(int maxAuditDepth) {
+        messageAudit.setAuditDepth(maxAuditDepth);
+    }
 
-    public abstract int getMaxAuditDepth();
+    public int getMaxAuditDepth() {
+        return messageAudit.getAuditDepth();
+    }
 
-    protected abstract ActiveMQMessageAudit lookupActiveMQMessageAudit(Message message);
 }

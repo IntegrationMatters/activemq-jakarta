@@ -1,4 +1,6 @@
-/**
+/*
+ * Copyright (c) 2023.  Integration Matters GmbH
+ *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -6,21 +8,21 @@
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 package org.apache.activemq;
 
 import java.util.Enumeration;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.jms.*;
-import javax.jms.IllegalStateException;
+import jakarta.jms.*;
+import jakarta.jms.IllegalStateException;
 
 import org.apache.activemq.command.ActiveMQDestination;
 import org.apache.activemq.command.ConsumerId;
@@ -46,10 +48,10 @@ import org.apache.activemq.selector.SelectorParser;
  * </CODE>
  * or a <CODE>QueueSession</CODE>.
  *
- * @see javax.jms.Session#createBrowser
- * @see javax.jms.QueueSession#createBrowser
- * @see javax.jms.QueueBrowser
- * @see javax.jms.QueueReceiver
+ * @see jakarta.jms.Session#createBrowser
+ * @see jakarta.jms.QueueSession#createBrowser
+ * @see jakarta.jms.QueueBrowser
+ * @see jakarta.jms.QueueReceiver
  */
 
 public class ActiveMQQueueBrowser implements QueueBrowser, Enumeration {
@@ -183,7 +185,7 @@ public class ActiveMQQueueBrowser implements QueueBrowser, Enumeration {
             }
 
             try {
-                javax.jms.Message answer = consumer.receiveNoWait();
+                jakarta.jms.Message answer = consumer.receiveNoWait();
                 if (answer != null) {
                     return answer;
                 }
